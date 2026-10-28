@@ -1,0 +1,100 @@
+{
+  "sources": [
+    {
+      "kind": "hn_front",
+      "name": "Hacker News front page",
+      "interval_min": 60,
+      "weight": 0.5
+    },
+    {
+      "kind": "hn_search",
+      "name": "Hacker News search",
+      "interval_min": 60,
+      "weight": 1.0
+    },
+    {
+      "kind": "atom",
+      "name": "arXiv: visual-inertial odometry",
+      "interval_min": 360,
+      "weight": 1.5,
+      "url": "https://export.arxiv.org/api/query?search_query=%28abs%3A%22visual-inertial%22+OR+abs%3A%22visual+inertial%22+OR+abs%3A%22inertial+odometry%22%29+AND+%28cat%3Acs.RO+OR+cat%3Acs.CV+OR+cat%3Aeess.SY%29&sortBy=submittedDate&sortOrder=descending&max_results=50"
+    },
+    {
+      "kind": "atom",
+      "name": "arXiv: UAV state estimation",
+      "interval_min": 360,
+      "weight": 1.4,
+      "url": "https://export.arxiv.org/api/query?search_query=%28abs%3AUAV+OR+abs%3Adrone+OR+abs%3Aquadrotor+OR+abs%3A%22micro+aerial+vehicle%22%29+AND+%28abs%3Aodometry+OR+abs%3A%22state+estimation%22+OR+abs%3A%22visual-inertial%22%29+AND+cat%3Acs.RO&sortBy=submittedDate&sortOrder=descending&max_results=50"
+    },
+    {
+      "kind": "atom",
+      "name": "arXiv: event-based odometry",
+      "interval_min": 360,
+      "weight": 1.2,
+      "url": "https://export.arxiv.org/api/query?search_query=%28abs%3A%22event+camera%22+OR+abs%3A%22event-based%22%29+AND+%28abs%3Aodometry+OR+abs%3ASLAM+OR+abs%3A%22visual-inertial%22%29+AND+%28cat%3Acs.RO+OR+cat%3Acs.CV%29&sortBy=submittedDate&sortOrder=descending&max_results=50"
+    },
+    {
+      "kind": "atom",
+      "name": "arXiv: learned VIO and inertial odometry",
+      "interval_min": 360,
+      "weight": 1.0,
+      "url": "https://export.arxiv.org/api/query?search_query=%28abs%3A%22learned+inertial%22+OR+abs%3A%22deep+inertial%22+OR+abs%3A%22learning-based+visual-inertial%22+OR+abs%3A%22deep+visual+odometry%22%29+AND+%28cat%3Acs.RO+OR+cat%3Acs.CV+OR+cat%3Acs.LG%29&sortBy=submittedDate&sortOrder=descending&max_results=50"
+    },
+    {
+      "kind": "atom",
+      "name": "arXiv: GNSS-denied aerial navigation",
+      "interval_min": 360,
+      "weight": 1.0,
+      "url": "https://export.arxiv.org/api/query?search_query=%28abs%3A%22GNSS-denied%22+OR+abs%3A%22GPS-denied%22%29+AND+%28abs%3AUAV+OR+abs%3Adrone+OR+abs%3Aaerial%29+AND+cat%3Acs.RO&sortBy=submittedDate&sortOrder=descending&max_results=50"
+    },
+    {
+      "kind": "web_page",
+      "name": "Hugging Face Papers",
+      "url": "https://huggingface.co/papers",
+      "interval_min": 360,
+      "weight": 0.6
+    },
+    {
+      "kind": "github_releases",
+      "name": "OpenVINS releases",
+      "url": "https://github.com/rpng/open_vins/releases.atom",
+      "interval_min": 360,
+      "weight": 1.5
+    },
+    {
+      "kind": "github_releases",
+      "name": "VINS-Fusion commits",
+      "url": "https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/commits/master.atom",
+      "interval_min": 360,
+      "weight": 1.0
+    },
+    {
+      "kind": "github_releases",
+      "name": "ORB-SLAM3 releases",
+      "url": "https://github.com/UZ-SLAMLab/ORB_SLAM3/releases.atom",
+      "interval_min": 360,
+      "weight": 1.2
+    },
+    {
+      "kind": "github_releases",
+      "name": "PX4 Autopilot releases",
+      "url": "https://github.com/PX4/PX4-Autopilot/releases.atom",
+      "interval_min": 360,
+      "weight": 0.8
+    },
+    {
+      "kind": "github_releases",
+      "name": "Isaac ROS Visual SLAM releases",
+      "url": "https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam/releases.atom",
+      "interval_min": 360,
+      "weight": 0.8
+    },
+    {
+      "kind": "rss",
+      "name": "PX4 forum",
+      "url": "https://discuss.px4.io/latest.rss",
+      "interval_min": 120,
+      "weight": 0.8
+    }
+  ]
+}

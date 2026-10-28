@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SYNTHETIC fixture in the shape of the arXiv API Atom output. None of these papers exist. -->
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>arXiv Query Results (fixture)</title>
+  <entry>
+    <id>http://arxiv.org/abs/9999.00001v1</id>
+    <title>[fixture] Tightly coupled visual-inertial odometry for fast quadrotor flight</title>
+    <link href="http://arxiv.org/abs/9999.00001v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/9999.00001v1" rel="related" type="application/pdf"/>
+    <published>__NOW_ISO__</published>
+    <updated>__NOW_ISO__</updated>
+    <author><name>Fixture Author</name></author>
+    <summary>We present a visual-inertial odometry method for quadrotor flight with fast motion. We report ATE RMSE on EuRoC and TUM-VI with an ablation study and compare against OpenVINS. Open-source code is released, with a ROS 2 wrapper and real-world flight experiments on an onboard Jetson.</summary>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/9999.00002v1</id>
+    <title>[fixture] Event camera odometry with IMU preintegration on a UAV</title>
+    <link href="http://arxiv.org/abs/9999.00002v1" rel="alternate" type="text/html"/>
+    <published>__NOW_ISO__</published>
+    <updated>__NOW_ISO__</updated>
+    <author><name>Fixture Author</name></author>
+    <summary>An event camera odometry pipeline fused with inertial measurements for a UAV in low light. A new dataset is released together with benchmark results and documentation.</summary>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/9999.00003v1</id>
+    <title>[fixture] GNSS-denied navigation for a drone with a learned inertial odometry prior</title>
+    <link href="http://arxiv.org/abs/9999.00003v1" rel="alternate" type="text/html"/>
+    <published>__NOW_ISO__</published>
+    <updated>__NOW_ISO__</updated>
+    <author><name>Fixture Author</name></author>
+    <summary>A drone navigates without GNSS using a learned inertial odometry prior and visual-inertial odometry. How to reproduce: code released with a changelog and a migration note for the calibration format, a breaking change.</summary>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/9999.00004v1</id>
+    <title>[fixture] Revolutionary drift-free odometry is a game changer, 100x better</title>
+    <link href="http://arxiv.org/abs/9999.00004v1" rel="alternate" type="text/html"/>
+    <published>__NOW_ISO__</published>
+    <updated>__NOW_ISO__</updated>
+    <author><name>Fixture Author</name></author>
+    <summary>A revolutionary, game changer odometry result, 100x better than everything, shown in a demo video only. No datasets, no numbers.</summary>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/9999.00005v1</id>
+    <title>[fixture] Fermentation kinetics of sourdough starters</title>
+    <link href="http://arxiv.org/abs/9999.00005v1" rel="alternate" type="text/html"/>
+    <published>__NOW_ISO__</published>
+    <updated>__NOW_ISO__</updated>
+    <author><name>Fixture Author</name></author>
+    <summary>A study of sourdough starters, unrelated to state estimation.</summary>
+  </entry>
+</feed>

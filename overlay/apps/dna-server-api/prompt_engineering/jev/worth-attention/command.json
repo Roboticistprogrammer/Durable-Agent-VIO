@@ -1,0 +1,31 @@
+{
+  "name": "worth-attention",
+  "version": 2,
+  "description": "Is one item worth a VIO researcher's attention today",
+  "model": "~typesafe/jev-latest",
+  "state": {
+    "title": "{{title}}",
+    "source": "{{source}}",
+    "published_at": "{{published_at}}",
+    "excerpt": "{{excerpt}}",
+    "taste_examples": "{{taste_examples}}"
+  },
+  "questions": {
+    "worth": {
+      "type": "noul",
+      "instructions": "Is the item in `title` and `excerpt` worth the attention of a researcher developing visual-inertial odometry for UAVs, today? `taste_examples` lists items the reader liked or disliked.",
+      "criteria": {
+        "true": "A new method, result, dataset, benchmark, open-source release, negative result, survey or deadline that could change what a VIO researcher builds, cites or knows",
+        "false": "A rehash, generic AI or robotics news, product marketing, funding news, rumor, a minor version bump or repo chore, or off topic for visual-inertial state estimation"
+      }
+    },
+    "novelty": {
+      "type": "score",
+      "instructions": "How new is the information in `title` and `excerpt` for someone who already follows the VIO literature? A small tweak of a known pipeline is incremental.",
+      "criteria": ["Old or rehashed", "Incremental", "Notable", "Major and new"]
+    }
+  },
+  "policy": {
+    "worth_min": 0.35
+  }
+}

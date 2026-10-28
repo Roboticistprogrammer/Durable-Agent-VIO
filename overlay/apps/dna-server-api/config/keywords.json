@@ -1,0 +1,61 @@
+{
+  "topic": [
+    "visual-inertial odometry",
+    "visual-inertial SLAM",
+    "UAV state estimation",
+    "event camera odometry",
+    "learned visual odometry",
+    "learned inertial odometry",
+    "GNSS-denied navigation",
+    "IMU preintegration",
+    "filter-based VIO",
+    "camera-IMU calibration",
+    "VIO robustness",
+    "LiDAR-visual-inertial fusion",
+    "visual-inertial dataset",
+    "PX4 visual odometry",
+    "neural SLAM"
+  ],
+  "hype": [
+    "drift-free",
+    "revolutionary",
+    "breakthrough",
+    "game changer",
+    "world's first",
+    "never loses tracking",
+    "funding round",
+    "stealth startup"
+  ],
+  "facts": [
+    "EuRoC",
+    "TUM-VI",
+    "UZH-FPV",
+    "Hilti SLAM",
+    "ATE RMSE",
+    "ablation study",
+    "open-source code",
+    "real-world flight",
+    "hardware experiments",
+    "onboard compute",
+    "Jetson",
+    "dataset release",
+    "reproducible",
+    "benchmark"
+  ],
+  "signal": [
+    "code released",
+    "new dataset",
+    "outperforms OpenVINS",
+    "outperforms VINS-Fusion",
+    "outperforms ORB-SLAM3",
+    "ROS 2",
+    "PX4 integration",
+    "calibration toolbox",
+    "call for papers",
+    "challenge",
+    "submission deadline",
+    "breaking change",
+    "new release",
+    "runs in real time on Jetson"
+  ]
+}
