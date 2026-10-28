@@ -1,6 +1,6 @@
 # Testing the VIO-for-UAV fork
 
-The working fork is `pi-durable-news-agent/`, on branch `vio` (uncommitted). `overlay/` is the same set of changes as a drop-in for a fresh clone.
+`overlay/` is the deliverable: the same set of changes as a drop-in for a fresh clone of upstream. The author tested it in a local clone, `pi-durable-news-agent/`, on branch `vio`. That clone is git-ignored here because it holds `.env`, the database and `node_modules`, so to reproduce, clone upstream and copy `overlay/` over it as `README.md` describes. The commands below assume that clone.
 
 ## Status
 
@@ -16,6 +16,7 @@ The working fork is `pi-durable-news-agent/`, on branch `vio` (uncommitted). `ov
 | 2 SSE streaming tests (`dna-server-api` #79, `dna-cli` #4) | Fail here, identically on pristine upstream. Likely Node 22 (repo needs 24) |
 | Browser UI suite, TUI smoke, `just combos dev` in a browser | **Not run** |
 | Live source fetch (2026-10-28) | **Done for 12 of 14.** 5 arXiv feeds return entries (12 / 3 / 1 / 1 / 2 over a 14-day window), 5 GitHub feeds are valid Atom, PX4 forum 25 entries, Hugging Face Papers 30 links. Both Hacker News sources got 403 from the test machine's network (Algolia 403, Firebase connection reset), so they are unverified |
+| Weekly schedule | `DNA_CRON_SCHEDULE="0 9 * * 5"` in `.env` and the crontab line installed (`just net cron local install`): one sweep, Fridays 09:00 local time, nothing else. Verified by running the exact cron command under `env -i` (sweep #2, audit clean, $0.01). Needs the API running at that time (`just net up local`); it does not restart itself after a reboot |
 | First live sweep (2026-10-28, `anthropic/claude-haiku-5.5`, search mode `web`) | **Done.** 7 candidates, 7 presented, audit clean, 38 tool calls, about $0.02 total, images $0. All 7 cards came from the `arXiv: visual-inertial odometry` source; no AI-agent news. Cards put dataset and metric next to numbers (AnchorFlow-VIO: LaMAria, 5 m recall 84.6%) and flag missing benchmarks (GOFusion: no EuRoC / TUM-VI numbers) |
 | Not built | `arxiv` fetcher, `paper` card, citation alerts, profile-aware jev (see `docs/paper-card-spec.md`) |
 

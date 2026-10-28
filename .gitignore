@@ -1,0 +1,19 @@
+# The upstream clone this kit is applied to: the deliverable is overlay/, not the clone.
+# It holds .env (API keys), data/, logs/ and node_modules/.
+pi-durable-news-agent/
+
+# Secrets and local state, in case the kit is ever applied in place
+.env
+.env.*
+!.env.example
+data/
+logs/
+node_modules/
+dna-network.yaml
+
+# Editors, OS, tool scratch
+.DS_Store
+*.log
+.claude/
+.playwright-cli/
+graphify-out/
