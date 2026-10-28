@@ -13,7 +13,9 @@ vio-uav-kit/
 │   ├── field-reference.md             every field you can edit, what is required, what must not change
 │   ├── paper-card-spec.md             required fields for a future "paper" card (needs code, see file)
 │   └── research-profile.template.md   fill-in sheet that describes your own work
-└── overlay/apps/dna-server-api/       mirrors the repo layout, copy it over the repo
+└── overlay/apps/                      mirrors the repo layout, copy it over the repo
+  dna-client-browser/fe/           bright UI theme (index.html, src/styles/tokens.css, app.css)
+  dna-server-api/
     ├── config/
     │   ├── keywords.json              15 topics + hype / facts / signal hint words
     │   └── sources.json               14 sources (5 arXiv queries, 5 GitHub feeds, HN, HF Papers, PX4 forum)
@@ -27,8 +29,8 @@ vio-uav-kit/
 ```bash
 git clone https://github.com/disler/pi-durable-news-agent && cd pi-durable-news-agent
 git checkout -b vio                                   # keep upstream intact, see "Known caveats"
-cp -r /path/to/vio-uav-kit/overlay/. .                # overwrites 15 files and adds 4, review with git diff
-just install && cp .env.example .env                 # add OPENROUTER_API_KEY, leave OPENAI_API_KEY empty
+cp -r /path/to/vio-uav-kit/overlay/. .                # overwrites 18 files and adds 4, review with git diff
+just install && cp .env.example .env                 # add OPENROUTER_API_KEY, leave OPENAI_API_KEY empty (needs zsh, see "Run it locally")
 just api tokens
 just api sources-check                                # fetches every source once, live, prints a status table
 just combos local                                     # then set the schedule to 60 min in the top bar
@@ -39,6 +41,54 @@ Three details that matter:
 1. **Seeding runs once.** `keywords.json` and `sources.json` are read only when the database is first created. On a fresh clone that is automatic. If you already ran the agent, delete `data/` (or your `DNA_DATA_DIR`) first, or change keywords in the app or with `dna keywords add|weight|off|rm`. Sources you add to `sources.json` later are picked up once on the next start. Sources already in the database stay until you remove them in the app.
 2. **Weights are not in the JSON.** `keywords.json` holds plain strings. Per-topic weights (0.1 to 2.0, default 1.0) live in the database. Suggested starting points are below.
 3. **Leave `OPENAI_API_KEY` empty.** arXiv entries have no image, so with a key set the agent generates one per card (about $0.005 each).
+
+## Run it locally
+
+Run everything from the cloned repo folder (`pi-durable-news-agent/`, with the overlay applied and `.env` filled in).
+
+**Prerequisites**
+
+- Node 24 (`nvm install 24 && nvm use 24`). Node 22 runs the app but fails two SSE streaming tests.
+- `just` and `zsh`. The recipes call `zsh -cu`, but you never have to use zsh as your terminal: `sudo apt install zsh` (Ubuntu) or `brew install zsh just` (macOS) is enough. If you cannot install zsh, run `just --shell bash --shell-arg -cu <recipe>`, which works for single recipes but not for recipes that call `just` again, such as `combos dev`.
+
+**Start and stop**
+
+| Goal | Command |
+|---|---|
+| Start the API (port 4850) and the UI (port 4851) in the background | `just net up local` |
+| Check what is running | `just net status local` |
+| Open the UI | http://localhost:4851 |
+| Stop both, and remove the crontab line | `just net down local` |
+
+`just net up local` is safe to repeat. After a reboot, run it again: the API is a plain background process and does not restart by itself.
+
+**Use it**
+
+| Goal | Command |
+|---|---|
+| Run one sweep now | `just cron tick` |
+| List the cards, or open one | `just cli run feed`, `just cli run card 1` |
+| Keys, API, scopes and search health | `just cli run doctor` |
+| Status, schedule and cost | `just cli run status` |
+| Label a card | `just cli run label 1 signal` (or `hype`, `facts`) |
+| More or less like a card | `just cli run more 1`, `just cli run less 1` |
+| Free offline demo with a fake model and fixture feeds (stop the real API first) | `just combos dev` |
+| Tests | `just test unit` |
+
+A sweep costs roughly $0.01 to $0.02 with the default Haiku model and no image key.
+
+**Run it weekly: Fridays at 09:00 and never otherwise**
+
+1. Set the tick in `.env`: `DNA_CRON_SCHEDULE="0 9 * * 5"` (minute, hour, day of month, month, day of week; 5 is Friday, in the machine's local time).
+2. Install the crontab line: `just net cron local install`. Check it with `just net cron local status`, remove it with `just net cron local uninstall`.
+3. Make sure the schedule in the app's top bar (or `just cli run schedule 60`) is **60 minutes, not Off**. The cron tick only asks the API to sweep, and the API sweeps only when its own schedule says one is due. With an hourly tick the only choices are 60 minutes or Off.
+4. Keep the API running (`just net up local`) at that time, otherwise the tick finds nothing and that week is skipped.
+
+`just cli run status` shows "next sweep" as the next hour, which is wrong for a weekly tick. The next real sweep is the next Friday 09:00.
+
+## Look and feel
+
+The UI is bright by default (white panels, a soft blue-gray page, vivid pink as the accent, green for Facts and amber for Hype, all with readable contrast on white). Every color comes from the tokens at the top of `fe/src/styles/tokens.css`, so recoloring is a one-file edit. The original dark look is kept: in the browser console run `document.documentElement.dataset.theme = "dark"` to try it, or set `data-theme="dark"` on `<html>` in `fe/index.html` to make it the default. After editing styles, rebuild with `npm run build -w dna-client-browser`; `just net up local` serves the built files.
 
 ## Suggested topic weights (starting guesses)
 
@@ -66,6 +116,7 @@ Set in the app, or `dna keywords weight <id> <w>` (`dna keywords list` shows ids
 | `jev/same-story` | A preprint's later versions, its repo and its discussion threads count as one story |
 | `agents/news-desk` | New purpose, a **Reader profile** block for you to edit, rules for writing paper / release / deadline cards |
 | `agents/news-researcher` | Extracts research claims (sensors, datasets with metrics, baselines, real flight, code) and defines actionability for a researcher |
+| `dna-client-browser/fe` (styles, `index.html`) | Bright theme as the default; the dark palette stays under `data-theme="dark"`. Colors that were hard-coded in `app.css` now come from tokens |
 | `agents/deep-research` | Prefers papers, repos and dataset pages and reports venue, datasets, metrics and baselines |
 
 Each changed jev command has its `version` raised by one. Everything else is identical to upstream: template variables, question ids and types, score level counts, policies and thresholds.

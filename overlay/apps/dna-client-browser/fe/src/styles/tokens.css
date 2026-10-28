@@ -1,0 +1,106 @@
+/* The typesafe look from jev-duel. Bright by default; the original dark palette is kept under [data-theme="dark"]. Inter and JetBrains Mono ship in public/fonts (SIL OFL). */
+@font-face {
+  font-family: "Inter";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/inter-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/inter-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/inter-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+}
+:root {
+  --bg: #f4f6fc;
+  --panel: #ffffff;
+  --raised: #e8edf8;
+  --text: #151826;
+  --muted: #566078;
+  --faint: #8790a6;
+  --line: #d9dff0;
+  --accent: #d6245f;
+  --accent-soft: #fde1eb;
+  --signal: #d6245f;
+  --facts: #0f8a52;
+  --hype: #b85f00;
+  --bad: #cc2f25;
+  --ok: #0f8a52;
+  --on-accent: #ffffff;
+  --body: #2a3042;
+  --skeleton: #dfe5f4;
+  --track: #9aa6c4;
+  --hatch: #c7d0e6;
+  --code-bg: #eef1fa;
+  --line-strong: #b4bed8;
+  --bad-line: #f3b8b2;
+  --ok-line: #a9dfc4;
+  --row-line: #e6eaf6;
+  --scrim: rgba(21, 24, 38, 0.45);
+  --shadow-color: rgba(21, 24, 38, 0.2);
+  --json-key: #1d5fd6;
+  --json-string: #0f8a52;
+  --json-number: #b85f00;
+  --json-boolean: #d6245f;
+  --tint-neutral: #dfe5f4;
+  --tint-signal: rgba(214, 36, 95, 0.16);
+  --tint-facts: rgba(15, 138, 82, 0.16);
+  --tint-hype: rgba(184, 95, 0, 0.16);
+  --radius: 0;
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 32px;
+  --sans: "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* The original dark look: set document.documentElement.dataset.theme = "dark" */
+:root[data-theme="dark"] {
+  --bg: #121212;
+  --panel: #191919;
+  --raised: #262626;
+  --text: #f4f4f2;
+  --muted: #9a9a9a;
+  --faint: #6a6a6a;
+  --line: #2a2a2a;
+  --accent: #f386a1;
+  --accent-soft: #3a1d26;
+  --signal: #f386a1;
+  --facts: #57c48a;
+  --hype: #f0a640;
+  --bad: #e5675a;
+  --ok: #57c48a;
+  --on-accent: #121212;
+  --body: #d8d8d4;
+  --skeleton: #303030;
+  --track: #5a5a5a;
+  --hatch: #333;
+  --code-bg: #0d0d0d;
+  --line-strong: #444;
+  --bad-line: #4a2320;
+  --ok-line: #1f4a30;
+  --row-line: #1f1f1f;
+  --scrim: rgba(0, 0, 0, 0.6);
+  --shadow-color: rgba(0, 0, 0, 0.55);
+  --json-key: #8ab4f8;
+  --json-string: #57c48a;
+  --json-number: #f0a640;
+  --json-boolean: #f386a1;
+  --tint-neutral: #3a3a3a;
+  --tint-signal: rgba(243, 134, 161, 0.24);
+  --tint-facts: rgba(87, 196, 138, 0.22);
+  --tint-hype: rgba(240, 166, 64, 0.22);
+}
